@@ -4,7 +4,7 @@ const http = require("http");
 const socketIo = require("socket.io");
 const axios = require("axios");
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8000;
 
 const index = require("./index");
 const app = express();
