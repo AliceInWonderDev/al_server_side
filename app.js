@@ -8,6 +8,13 @@ const index = require("./index");
 const app = express();
 app.use(index);
 
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS');
+    next();
+});
+
 const server = http.createServer(app);
 server.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -21,6 +28,10 @@ let interval;
 //         clearInterval(interval);
 //     }
 //     interval = setInterval(() => gettingApiAndEmitting(socket), 500000);
+        // socket.on("getData", (city)=>{
+        //     selectedCity = city
+        //     gettingApiAndEmitting( socket );
+        // })
 //     socket.on("disconnect", () => {
 //         console.log("Client disconnected");
 //     });
